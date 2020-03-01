@@ -38,6 +38,8 @@ group :development, :test do
   gem 'webmock'
   gem 'vcr'
   gem 'capybara'
+  gem 'faker'
+  gem 'factory_bot_rails'
   gem 'awesome_print'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
