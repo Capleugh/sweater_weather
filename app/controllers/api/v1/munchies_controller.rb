@@ -3,7 +3,10 @@ class Api::V1::MunchiesController < ApplicationController
     start = params[:start]
     destination = params[:end]
     food = params[:food]
-    forecast = MunchiesFacade.new(start, destination, food)
-    forecast.get_future_forecast
+
+    munchies = MunchiesFacade.new(start, destination, food)
+    munchies.get_all_info
+
+    render json: MunchiesSerializer.new(munchies)
   end
 end
