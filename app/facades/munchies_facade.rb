@@ -1,6 +1,5 @@
 class MunchiesFacade
   def initialize(origin, destination, food)
-    # require "pry"; binding.pry
     @origin = origin
     @destination = destination
     @food = food
@@ -10,9 +9,9 @@ class MunchiesFacade
     Destination.new(get_directions_data)
   end
 
-  # def get_future_forecast
-  #   Forecst.new()
-  # end
+  def get_future_forecast
+    FutureForecast.new(get_future_forecast_data, get_destination)
+  end
 
   def get_directions_data
     service = GeocodeService.new
