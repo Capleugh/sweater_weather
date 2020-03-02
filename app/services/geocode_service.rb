@@ -14,5 +14,6 @@ class GeocodeService
       req.params['destination'] = destination
     end
     JSON.parse(location_data.body, symbolize_names: true)
+    # require "pry"; binding.pry
   end
 end
