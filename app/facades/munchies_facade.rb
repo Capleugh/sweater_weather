@@ -1,8 +1,8 @@
 class MunchiesFacade
   attr_reader :id
-  
-  def initialize(id, origin, destination, food)
-    @id = id
+
+  def initialize(origin, destination, food)
+    @id = nil
     @origin = origin
     @destination = destination
     @food = food
