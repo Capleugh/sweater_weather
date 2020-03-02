@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "munchies api", :vcr do
-  it "sends information about an image for a specific location" do
+  it "sends information about directions to a specific destination, that destination's weather, and restaurant whihc is open when you arrive" do
     get "/api/v1/munchies?start=denver,co&end=pueblo,co&food=chinese"
 
     expect(response).to be_successful
