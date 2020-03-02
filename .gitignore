@@ -24,6 +24,9 @@
 # Ignore application configuration
 /config/application.yml
 
+# Ignore simplecov
+/coverage
+
 /public/packs
 /public/packs-test
 /node_modules

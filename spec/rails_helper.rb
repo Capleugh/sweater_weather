@@ -12,6 +12,9 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<GOOGLE_API_KEY>") { ENV['GOOGLE_API_KEY'] }
+  config.filter_sensitive_data("<DARK_SKY_API_KEY>") { ENV['DARK_SKY_API_KEY'] }
+  config.filter_sensitive_data("<YELP_API_KEY>") { ENV['YELP_API_KEY'] }
+  config.filter_sensitive_data("<YELP_CLIENT_ID>") { ENV['YELP_CLIENT_ID'] }
 end
 
 # Prevent database truncation if the environment is production
