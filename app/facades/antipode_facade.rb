@@ -1,11 +1,19 @@
 class AntipodeFacade
   def initialize(location)
-    # require "pry"; binding.pry
     @location = location
   end
 
   def get_location
     ForeignCountryLocation.new(get_location_data)
+  end
+
+  def get_antipode
+    Antipode.new(get_antipode_data)
+  end
+
+  def get_antipode_location_data
+    service = ReverseGeocodeService.new
+    service.get_antipode_json(get_antipode)
   end
 
   def get_location_data
@@ -15,6 +23,6 @@ class AntipodeFacade
 
   def get_antipode_data
     service = AmypodeService.new
-    service.get_antipode_json(get_location)
+    service.get_antipode_coord_json(get_location)
   end
 end
