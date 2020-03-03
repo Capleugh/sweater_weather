@@ -9,11 +9,38 @@ RSpec.describe "forecast api", :vcr do
     json = JSON.parse(response.body, symbolize_names: true)
 
     expect(json[:data][:type]).to eq("forecast")
+    expect(json[:data][:attributes][:timezone]).to eq("America/Denver")
+
     expect(json[:data][:attributes][:location][:city]).to eq("Denver")
     expect(json[:data][:attributes][:location][:state]).to eq("CO")
-    #come back and change Colorado to the abbreviation
     expect(json[:data][:attributes][:location][:country]).to eq("United States")
-    expect(json[:data][:attributes][:timezone]).to eq("America/Denver")
-    # come back and test this more robustly
+
+    expect(json[:data][:attributes][:forecast_currently][:summary]).to eq("Light Snow")
+    expect(json[:data][:attributes][:forecast_currently][:icon]).to eq("snow")
+    expect(json[:data][:attributes][:forecast_currently][:time]).to eq(1583131737)
+    expect(json[:data][:attributes][:forecast_currently][:temp]).to eq(27.26)
+    expect(json[:data][:attributes][:forecast_currently][:high]).to eq(42.59)
+    expect(json[:data][:attributes][:forecast_currently][:low]).to eq(23.44)
+    expect(json[:data][:attributes][:forecast_currently][:location][:city]).to eq("Denver")
+    expect(json[:data][:attributes][:forecast_currently][:location][:state]).to eq("CO")
+    expect(json[:data][:attributes][:forecast_currently][:location][:country]).to eq("United States")
+
+    expect(json[:data][:attributes][:forecast_daily][0]).to eq({:time=>1583046000, :icon=>"snow", :precip_chance=>0.57, :high=>42.59, :low=>23.44})
+    expect(json[:data][:attributes][:forecast_daily][1]).to eq({:time=>1583132400, :icon=>"clear-day", :precip_chance=>0.29, :high=>47.79, :low=>26.05})
+    expect(json[:data][:attributes][:forecast_daily][2]).to eq({:time=>1583218800, :icon=>"clear-day", :precip_chance=>0.04, :high=>54.92, :low=>27.22})
+    expect(json[:data][:attributes][:forecast_daily][3]).to eq({:time=>1583305200, :icon=>"clear-day", :precip_chance=>0.02, :high=>60.22, :low=>35.45})
+    expect(json[:data][:attributes][:forecast_daily][4]).to eq({:time=>1583391600, :icon=>"clear-day", :precip_chance=>0.02, :high=>60.41, :low=>30.97})
+
+    expect(json[:data][:attributes][:forecast_hourly]).to eq([
+      {:time=>1583128800, :icon=>"partly-cloudy-night", :temp=>28.33},
+      {:time=>1583132400, :icon=>"snow", :temp=>27.09},
+      {:time=>1583136000, :icon=>"snow", :temp=>27.15},
+      {:time=>1583139600, :icon=>"partly-cloudy-night", :temp=>27.27},
+      {:time=>1583143200, :icon=>"partly-cloudy-night", :temp=>26.33},
+      {:time=>1583146800, :icon=>"cloudy", :temp=>25.31},
+      {:time=>1583150400, :icon=>"partly-cloudy-night", :temp=>24.32},
+      {:time=>1583154000, :icon=>"partly-cloudy-night", :temp=>23.94}
+     ]
+    )
   end
 end
