@@ -2,7 +2,7 @@
    def show
      antipode = AntipodeFacade.new(location_params)
 
-     render json: AntipodeSerializer.new(antipode)
+     render json: AntipodeSerializer.new(antipode.get_antipode)
    end
 
    private

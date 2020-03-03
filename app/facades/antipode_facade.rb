@@ -6,12 +6,8 @@ class AntipodeFacade
     @location = location
   end
 
-  def search_location
-    ForeignCountryLocation.new(get_location_data)
-  end
-
   def get_antipode
-    Antipode.new(get_antipode_data)
+    Antipode.new(get_antipode_city, get_forecast, search_location)
   end
 
   def get_antipode_city
@@ -22,14 +18,22 @@ class AntipodeFacade
     AntipodeForecast.new(get_forecast_data)
   end
 
+  def search_location
+    ForeignCountryLocation.new(get_location_data)
+  end
+
+  def get_antipode_coordinates
+    AntipodeCoordinate.new(get_antipode_data)
+  end
+
   def get_forecast_data
     service = DarkSkyService.new
-    service.get_forecast_json(get_antipode)
+    service.get_forecast_json(get_antipode_coordinates)
   end
 
   def get_antipode_location_data
     service = ReverseGeocodeService.new
-    service.get_antipode_json(get_antipode)
+    service.get_antipode_json(get_antipode_coordinates)
   end
 
   def get_location_data
