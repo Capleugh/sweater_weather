@@ -1,9 +1,9 @@
 class Forecast
-  attr_reader :id, :location, :timezone, :currently, :hourly, :daily
+  attr_reader :id, :timezone, :currently, :hourly, :daily
 
-  def initialize(forecast_data, location)
+  def initialize(forecast_data, full_location)
     @id = nil
-    @location = location
+    @full_location = full_location
     @timezone = forecast_data[:timezone]
     @currently = forecast_data[:currently]
     @hourly = forecast_data[:hourly][:data]
@@ -18,9 +18,7 @@ class Forecast
      temp: @currently[:temperature],
      high: @daily[0][:temperatureHigh],
      low: @daily[0][:temperatureLow],
-     city: @location.city,
-     state: @location.state,
-     country: @location.country}
+     location: location}
   end
 
   def forecast_currently_details
@@ -31,7 +29,6 @@ class Forecast
      humidity: @currently[:humidity],
      visibility: @currently[:visibility],
      uv_index: @currently[:uvIndex]}
-     # maybe come back and deal with uv index (low, moderate, high)
   end
 
   def forecast_hourly
@@ -51,5 +48,11 @@ class Forecast
        high: key[:temperatureHigh],
        low: key[:temperatureLow]}
     end
+  end
+
+  def location
+    {city: @full_location.city,
+     state: @full_location.state,
+     country: @full_location.country}
   end
 end
