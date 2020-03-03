@@ -14,7 +14,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GOOGLE_API_KEY>") { ENV['GOOGLE_API_KEY'] }
   config.filter_sensitive_data("<DARK_SKY_API_KEY>") { ENV['DARK_SKY_API_KEY'] }
   config.filter_sensitive_data("<YELP_API_KEY>") { ENV['YELP_API_KEY'] }
-  config.filter_sensitive_data("<YELP_CLIENT_ID>") { ENV['YELP_CLIENT_ID'] }
+  config.filter_sensitive_data("<AMYPODE_API_KEY>") { ENV['AMYPODE_API_KEY'] }
 end
 
 # Prevent database truncation if the environment is production
