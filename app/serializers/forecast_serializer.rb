@@ -1,7 +1,11 @@
 class ForecastSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :id, :location, :timezone #:currently, :hourly, :daily maybe you want those here? maybe not?
+  attributes :id, :timezone
+
+  attribute :location do |full_location|
+    full_location.location
+  end
 
   attribute :forecast_currently do |location|
     location.forecast_currently
