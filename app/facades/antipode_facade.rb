@@ -1,9 +1,12 @@
 class AntipodeFacade
+  attr_reader :id
+
   def initialize(location)
+    @id = nil
     @location = location
   end
 
-  def get_location
+  def search_location
     ForeignCountryLocation.new(get_location_data)
   end
 
@@ -36,6 +39,6 @@ class AntipodeFacade
 
   def get_antipode_data
     service = AmypodeService.new
-    service.get_antipode_coord_json(get_location)
+    service.get_antipode_coord_json(search_location)
   end
 end
