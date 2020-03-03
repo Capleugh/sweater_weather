@@ -7,7 +7,7 @@ class AntipodeForecast
   def forecast
     {
       summary: @summary,
-      current_temperature: @current_temperature
+      current_temperature: @current_temperature.round.to_s
     }
   end
 end
