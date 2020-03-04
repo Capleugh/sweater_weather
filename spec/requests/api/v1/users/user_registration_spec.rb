@@ -14,7 +14,6 @@ RSpec.describe 'user registration api', :vcr do
 
     expect(response).to be_successful
     user_json = JSON.parse(response.body)
-# require "pry"; binding.pry
 
     expect(user.email).to eq("whatever@example.com")
     expect(response).to have_http_status(:created)
