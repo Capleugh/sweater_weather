@@ -4,12 +4,16 @@ class ForecastFacade
     @location = location
   end
 
+  def get_location_forecast
+    LocationForecast.new(get_location, get_forecast)
+  end
+
   def get_location
     Location.new(get_location_data)
   end
 
   def get_forecast
-    Forecast.new(get_weather_data, get_location)
+    Forecast.new(get_weather_data)
   end
 
   def get_location_data
