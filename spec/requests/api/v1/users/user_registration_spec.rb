@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe 'user registration api' do
-  it 'sends user information which is required in order to make an account succesfully' do
+RSpec.describe 'user registration api', :vcr do
+  it 'creates a user and api key' do
     user_params = {
       email: "whatever@example.com",
       password: "password",
       password_confirmation: "password"
     }
 
-    post '/api/v1/users', params: { user: user_params }
+    post '/api/v1/users', params: user_params
 
     user = User.last
 
     expect(response).to be_successful
-
-    expect(user.email).to eq(whatever@example.com)
+# require "pry"; binding.pry
+    expect(user.email).to eq("whatever@example.com")
     # expect something involving the api key
   end
 
