@@ -1,13 +1,14 @@
 class Api::V1::UsersController < ApplicationController
   def create
-    user = User.create!(user_params)
+    user = User.new(user_params)
     if user.save
-      response.status = 200
-      # render json in here
+      response.status = 201
+
+      render json: UserSerializer.new(user)
     else
       response.status = 401
-      # require "pry"; binding.pry
-      # render some json in here
+
+      render json: user.errors.full_messages.to_sentence
     end
   end
 
