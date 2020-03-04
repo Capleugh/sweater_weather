@@ -16,6 +16,6 @@ RSpec.describe "forecast api", :vcr do
     expect(attributes).to have_key(:forecast_currently)
     expect(attributes).to have_key(:forecast_hourly)
     expect(attributes).to have_key(:forecast_daily)
-    expect(json[:data][:type]).to eq("forecast")
+    expect(json[:data][:type]).to eq("forecast") 
   end
 end

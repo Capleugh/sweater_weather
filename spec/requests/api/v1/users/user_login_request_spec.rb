@@ -27,7 +27,7 @@ RSpec.describe 'user login api', :vcr do
       password: "password"
     }
 
-    post '/api/v1/users', params: user_params
+    post '/api/v1/sessions', params: user_params
 
     expect(response).to_not be_successful
     expect(response).to have_http_status(:unauthorized)
@@ -42,7 +42,7 @@ RSpec.describe 'user login api', :vcr do
 
     }
 
-    post '/api/v1/users', params: user_params
+    post '/api/v1/sessions', params: user_params
 
     expect(response).to_not be_successful
     expect(response).to have_http_status(:unauthorized)
@@ -57,7 +57,7 @@ RSpec.describe 'user login api', :vcr do
 
     }
 
-    post '/api/v1/users', params: user_params
+    post '/api/v1/sessions', params: user_params
 
     expect(response).to_not be_successful
     expect(response).to have_http_status(:unauthorized)

@@ -10,8 +10,8 @@ RSpec.describe 'road trip api', :vcr do
       api_key: user.api_key
     }
 
-    post '/api/v1/road_trip'
+    post '/api/v1/road_trip', params: road_trip_params
 
-
+    road_trip_json = JSON.parse(response.body)
   end
 end
