@@ -1,7 +1,8 @@
 class Api::V1::RoadTripController < ApplicationController
   def create
     road_trip = RoadTripFacade.new(road_trip_params)
-    road_trip.get_forecast
+    
+    render json: RoadtripSerializer.new(road_trip.get_road_trip)
   end
 
   private
