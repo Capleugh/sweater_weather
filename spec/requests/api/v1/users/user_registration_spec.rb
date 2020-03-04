@@ -13,13 +13,15 @@ RSpec.describe 'user registration api', :vcr do
     user = User.last
 
     expect(response).to be_successful
+    user_json = JSON.parse(response.body)
+# require "pry"; binding.pry
 
     expect(user.email).to eq("whatever@example.com")
-    expect(response).to have_http_status(:success)
-    # expect(response).to have_http_status(:ok)
+    expect(response).to have_http_status(:created)
+    expect(user_json["data"]["attributes"]).to have_key("api_key")
   end
 
-  it "sends an error messages" do
+  it "sends a blank email error message" do
     user_params = {
       email: "",
       password: "password",
@@ -28,21 +30,52 @@ RSpec.describe 'user registration api', :vcr do
 
     post '/api/v1/users', params: user_params
 
-    # expect(response).to 
-    expect(response).to have_http_status(:error)
+    expect(response).to_not be_successful
+    expect(response).to have_http_status(:unauthorized)
+    expect(response.body).to eq("Email can't be blank")
+  end
+
+  it "sends a blank password error message" do
+    user_params = {
+      email: "whatever@example.com",
+      password: "",
+      password_confirmation: ""
+    }
+
+    post '/api/v1/users', params: user_params
+
+    expect(response).to_not be_successful
+    expect(response).to have_http_status(:unauthorized)
+    expect(response.body).to eq("Password digest can't be blank and Password can't be blank")
+  end
+
+  it "sends a passwords don't match error message" do
+    user_params = {
+      email: "whatever@example.com",
+      password: "password",
+      password_confirmation: "word"
+    }
+
+    post '/api/v1/users', params: user_params
+
+    expect(response).to_not be_successful
+    expect(response).to have_http_status(:unauthorized)
+    expect(response.body).to eq("Password confirmation doesn't match Password")
+  end
+
+  it "sends a email already in use error message" do
+    User.create(email: "whatever@example.com", password: "password", password_confirmation: "password")
+
+    user_params = {
+      email: "whatever@example.com",
+      password: "password",
+      password_confirmation: "password"
+    }
+
+    post '/api/v1/users', params: user_params
+
+    expect(response).to_not be_successful
+    expect(response).to have_http_status(:unauthorized)
+    expect(response.body).to eq("Email has already been taken")
   end
 end
-
-
-#
-# response
-#
-# status: 201
-# body:
-#
-# {
-#   "api_key": "jgn983hy48thw9begh98h4539h4",
-# }
-
-# A successful request creates a user and generates a unique api key associated with that user.
-# An unsuccessful request returns a 400 level status code and body with a description of why the request wasn’t successful. Potential reasons a request would fail: passwords don’t match, email has already been taken, missing a field, etc.
