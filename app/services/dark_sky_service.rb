@@ -8,7 +8,6 @@ class DarkSkyService
   def get_future_forecast_json(destination)
     forecast_data = Faraday.get("https://api.darksky.net/forecast/#{ENV['DARK_SKY_API_KEY']}/#{destination.lat},#{destination.lng},#{destination.time}")
 
-    json = JSON.parse(forecast_data.body, symbolize_names: true)
-  # require "pry"; binding.pry
+    JSON.parse(forecast_data.body, symbolize_names: true)
   end
 end
