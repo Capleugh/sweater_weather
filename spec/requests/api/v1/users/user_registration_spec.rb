@@ -13,15 +13,24 @@ RSpec.describe 'user registration api', :vcr do
     user = User.last
 
     expect(response).to be_successful
-# require "pry"; binding.pry
+
     expect(user.email).to eq("whatever@example.com")
-    # expect something involving the api key
+    expect(response).to have_http_status(:success)
+    # expect(response).to have_http_status(:ok)
   end
 
-#   xit "sends error messages describing why request wasn't handled successfully" do
-#
-#     expect(response).to be_404
-#   end
+  it "sends an error messages" do
+    user_params = {
+      email: "",
+      password: "password",
+      password_confirmation: "password"
+    }
+
+    post '/api/v1/users', params: user_params
+
+    # expect(response).to 
+    expect(response).to have_http_status(:error)
+  end
 end
 
 
