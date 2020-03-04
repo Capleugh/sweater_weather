@@ -14,6 +14,13 @@ RSpec.describe 'road trip api', :vcr do
 
     post '/api/v1/road_trip', params: road_trip_params
 
-    road_trip_json = JSON.parse(response.body)
+    road_trip_json = JSON.parse(response.body, symbolize_names: true)
+
+    attributes = road_trip_json[:data][:attributes]
+
+    expect(attributes).to have_key(:origin)
+    expect(attributes).to have_key(:destination)
+    expect(attributes).to have_key(:travel_time)
+    expect(attributes).to have_key(:forecast)
   end
 end
