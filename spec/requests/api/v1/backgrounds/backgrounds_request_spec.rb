@@ -7,7 +7,9 @@ RSpec.describe "backgrounds api", :vcr do
     expect(response).to be_successful
 
     json = JSON.parse(response.body, symbolize_names: true)
-    
-    expect(json[:data][:attributes][:image]).to eq("https://images.unsplash.com/photo-1519424187720-db6d0fc5a5d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExODU4NH0")
+
+    attributes = json[:data][:attributes]
+
+    expect(attributes).to have_key(:image)
   end
 end
