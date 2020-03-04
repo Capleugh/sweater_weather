@@ -2,7 +2,15 @@ class Api::V1::RoadTripController < ApplicationController
   def create
     road_trip = RoadTripFacade.new(road_trip_params)
     
-    render json: RoadtripSerializer.new(road_trip.get_road_trip)
+    if road_trip.api_key
+      response.status = 200
+
+      render json: RoadtripSerializer.new(road_trip.get_road_trip)
+    else
+      response.status = 401
+
+      render json: { unauthorized: "Permission denied"}
+    end
   end
 
   private
