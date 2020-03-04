@@ -1,7 +1,7 @@
 class ForecastSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :id, :timezone
+  attributes :timezone
 
   attribute :location do |full_location|
     full_location.location
