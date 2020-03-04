@@ -2,26 +2,26 @@ require 'rails_helper'
 
 RSpec.describe 'user registration api' do
   it 'sends user information which is required in order to make an account succesfully' do
-
-    body = {
-      "email": "whatever@example.com",
-      "password": "password",
-      "password_confirmation": "password"
+    user_params = {
+      email: "whatever@example.com",
+      password: "password",
+      password_confirmation: "password"
     }
 
-    post '/api/v1/users'
+    post '/api/v1/users', params: { user: user_params }
+
+    user = User.last
 
     expect(response).to be_successful
 
-    json = JSON.parse(response.body, symbolize_names: true)
-
-    expect(json["api_key"]).to 
+    expect(user.email).to eq(whatever@example.com)
+    # expect something involving the api key
   end
 
-  xit "sends error messages describing why request wasn't handled successfully" do
-
-    expect(response).to be_404
-  end
+#   xit "sends error messages describing why request wasn't handled successfully" do
+#
+#     expect(response).to be_404
+#   end
 end
 
 
