@@ -1,5 +1,5 @@
 class RoadTripFacade
-  attr_reader :id
+  attr_reader :id, :api_key
 
   def initialize(road_trip_data)
     @id = nil
