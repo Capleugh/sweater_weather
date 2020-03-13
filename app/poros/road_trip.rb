@@ -14,7 +14,6 @@ class RoadTrip
   end
 
   def forecast
-    {summary: @forecast.summary,
-     temp: @forecast.temp}
+    RoadtripForecast.new(@forecast)
   end
 end
