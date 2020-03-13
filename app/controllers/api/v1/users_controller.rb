@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
     else
       response.status = 401
 
-      render json: user.errors.full_messages.to_sentence
+      render json: { registration_failed: user.errors.full_messages.to_sentence }
     end
   end
 
