@@ -31,7 +31,6 @@ RSpec.describe 'user registration api', :vcr do
 
     expect(response).to_not be_successful
     expect(response).to have_http_status(:unauthorized)
-    expect(response.body).to eq("Email can't be blank")
   end
 
   it "sends a blank password error message" do
@@ -45,7 +44,6 @@ RSpec.describe 'user registration api', :vcr do
 
     expect(response).to_not be_successful
     expect(response).to have_http_status(:unauthorized)
-    expect(response.body).to eq("Password digest can't be blank and Password can't be blank")
   end
 
   it "sends a passwords don't match error message" do
@@ -59,7 +57,7 @@ RSpec.describe 'user registration api', :vcr do
 
     expect(response).to_not be_successful
     expect(response).to have_http_status(:unauthorized)
-    expect(response.body).to eq("Password confirmation doesn't match Password")
+    expect(response.body).to eq("{\"registration_failed\":\"Password confirmation doesn't match Password\"}")
   end
 
   it "sends a email already in use error message" do
@@ -75,6 +73,5 @@ RSpec.describe 'user registration api', :vcr do
 
     expect(response).to_not be_successful
     expect(response).to have_http_status(:unauthorized)
-    expect(response.body).to eq("Email has already been taken")
   end
 end
