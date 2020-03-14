@@ -29,9 +29,9 @@ Root URL for any endpoint in this application
 
 ### Forecast
 `GET /forecast`
-#### Sample Request
+##### Sample Request
 `https://weather-for-a-sweater.herokuapp.com/api/v1/forecast?location=denver,co`
-#### Sample Response
+##### Sample Response
 ```
 {
     "data": {
@@ -152,9 +152,9 @@ Root URL for any endpoint in this application
 
 ### Background
 `GET /backgrounds`
-#### Sample Request
+##### Sample Request
 `https://weather-for-a-sweater.herokuapp.com/api/v1/backgrounds?location=denver,co`
-#### Sample Response
+##### Sample Response
 ```
 {
     "data": {
@@ -169,9 +169,9 @@ Root URL for any endpoint in this application
 
 ### Registration 
 `POST /users`
-#### Sample Request
+##### Sample Request
 `https://weather-for-a-sweater.herokuapp.com/api/v1/users?email=corndog@example.com&password=password&password_confirmation=password`
-#### Sample Response
+##### Sample Response
 ```
 {
     "data": {
@@ -187,9 +187,9 @@ Root URL for any endpoint in this application
 
 ### Login 
 `POST /sessions`
-#### Sample Request
+##### Sample Request
 `https://weather-for-a-sweater.herokuapp.com/api/v1/sessions?email=corndog@example.com&password=password`
-#### Sample Response
+##### Sample Response
 ```
 {
     "data": {
@@ -205,9 +205,9 @@ Root URL for any endpoint in this application
 
 ### Road Trip Info
 `POST /road_trip`
-#### Sample Request
+##### Sample Request
 `https://weather-for-a-sweater.herokuapp.com//api/v1/road_trip?origin=Denver, CO&destination=Dallas, TX&api_key=SwWbgFAQhpKKgdqTcfyds8oU`
-#### Sample Response
+##### Sample Response
 ```
 {
     "data": {
