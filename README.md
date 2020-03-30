@@ -236,4 +236,4 @@ Root URL for any endpoint in this application:
   * Google Geocoding API
   * Unsplash API  
 * PostgresQL - database manager
-* Heorku - cloud platform for app hosting
+* Heroku - cloud platform for app hosting
