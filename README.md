@@ -227,7 +227,7 @@ Root URL for any endpoint in this application:
 
 
 ## Built With
-* Ruby on Rails - web framework (version)
+* Rails 6.0.2.1
 * [Fast JSON API](https://github.com/Netflix/fast_jsonapi/blob/master/performance_methodology.md)
 * Third Party APIs:
   * DarkSky API
