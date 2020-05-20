@@ -229,9 +229,9 @@ Root URL for any endpoint in this application:
 ## Built With
 * Rails 6.0.2.1
 * [Fast JSON API](https://github.com/Netflix/fast_jsonapi/blob/master/performance_methodology.md)
-* Third Party APIs:
+* Third-party APIs:
   * DarkSky API
   * Google Geocoding API
   * Unsplash API  
-* PostgresQL - database manager
+* PostgreSQL - database manager
 * Heroku - cloud platform for app hosting
