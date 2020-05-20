@@ -226,7 +226,7 @@ Root URL for any endpoint in this application:
 ```
 
 
-## Built With
+## Technologies
 * Rails 6.0.2.1
 * [Fast JSON API](https://github.com/Netflix/fast_jsonapi/blob/master/performance_methodology.md)
 * Third-party APIs:
