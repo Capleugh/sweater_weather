@@ -23,8 +23,8 @@ Sweater Weather is an API only application designed to expose forecast and road 
 Root URL for any endpoint in this application: 
 `https://weather-for-a-sweater.herokuapp.com/api/v1`
 
-* All responses will be formatted as JSON.
-* It is important to note that POST requests should be made in Postman in order to see a response rendered.
+* All responses formatted as JSON
+* It is important to note that POST requests should be made in Postman in order to see a response rendered
 
 ### Forecast
 `GET /forecast`
