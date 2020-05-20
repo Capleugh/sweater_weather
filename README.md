@@ -5,6 +5,8 @@ Sweater Weather is an API only application designed to expose forecast and road 
 
 ## Access Locally
 * Clone this repo with: `git@github.com:Capleugh/sweater_weather.git`
+* `cd` into `sweater_weather`
+* If you do not have bundler installed on your machine, run `gem install bundler`
 * Run `$ bundle install`
 * Run `$ rails db:setup`
 * This application uses the following gems for testing, which are included in the gemfile:
